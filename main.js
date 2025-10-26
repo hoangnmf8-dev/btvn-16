@@ -110,44 +110,44 @@ function convertNumbertoString(n) {
   let result = "";
 
   if (thousand > 0) {
-    result += readNumber(thousand, !result) + " nghìn ";
+    result += readNumber(thousand, !result) + " ngàn";
   }
 
   if (hundred > 0) {
-    result += readNumber(hundred, !result) + " trăm ";
+    result += (result ? " " : "") + readNumber(hundred, !result) + " trăm";
   } else if (thousand > 0 && (dozen > 0 || unit > 0)) {
-    result += "không trăm ";
+    result += " không trăm";
   }
 
   if (dozen > 0) {
     if (dozen === 1) {
-      result += result ? "mười " : "Mười ";
+      result += result ? " mười" : "Mười";
     } else if (unit === 0) {
-      result += readNumber(dozen, !result) + " mươi ";
+      result += (result ? " " : "") + readNumber(dozen, !result) + " mươi";
     } 
     else {
-      result += readNumber(dozen, !result) + " ";
+      result += (result ? " " : "") + readNumber(dozen, !result);
     }
   } else if ((thousand > 0 || hundred > 0) && unit > 0) {
-    result += "lẻ ";
+    result += " lẻ";
   }
 
   if (unit > 0) {
     if(unit === 1 && dozen > 1) {
-      result += "mốt";
+      result += " mốt";
     } else if (unit === 4 && dozen > 1) {
-      result += "tư";
+      result += " tư";
     } else if (unit === 5 && dozen > 0) {
-      result += "lăm";
+      result += " lăm";
     } else {
-      result += readNumber(unit, !result);
+      result += (result ? " " : "") + readNumber(unit, !result);
     }
   }
 
   return result;
 }
 
-console.log(convertNumbertoString(1234));
+console.log(convertNumbertoString(3010));
 
 //Bài 6
 console.log("Bài 6: ");
